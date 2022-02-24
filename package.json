@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,11 @@
   "homepage": "https://github.com/amanbhadauria01/Webhooks-Sample#readme",
   "dependencies": {
     "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
+    "env": "0.0.2",
     "express": "^4.17.3",
-    "express-x-hub": "^1.0.4"
+    "express-x-hub": "^1.0.4",
+    "node-fetch": "^2.6.7",
+    "url": "^0.11.0"
   }
 }

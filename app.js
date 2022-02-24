@@ -8,12 +8,10 @@
 
  var bodyParser = require('body-parser');
  var express = require('express');
+ var config = require("./services/config");
+ var GraphApi = require("./services/graph-api");
  var app = express();
  var xhub = require('express-x-hub');
- 
- app.set('port', (process.env.PORT || 5000));
- console.log(app.get('port'))
- app.listen(app.get('port'));
  
  app.use(xhub({ algorithm: 'sha1', secret: process.env.APP_SECRET }));
  app.use(bodyParser.json());
@@ -59,5 +57,18 @@
    received_updates.unshift(req.body);
    res.sendStatus(200);
  });
- 
- app.listen();
+
+ async function main() {
+  // Check if all environment variables are set
+  config.checkEnvVariables();
+
+  // Set our page subscriptions
+  await GraphApi.setPageSubscriptions();
+
+  // Listen for requests :)
+  var listener = app.listen(config.port, function() {
+    console.log(`The app is listening on port ${listener.address().port}`);
+  });
+}
+
+main();
