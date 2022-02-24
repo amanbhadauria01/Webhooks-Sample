@@ -19,22 +19,6 @@ app.use(bodyParser.json());
 var token = process.env.TOKEN || 'token';
 var received_updates = [];
 
-// Find the URL we're serving from
-app.all("*", function (req, res, next) {
-  // "x-forwarded-proto" will have https even when tunnelling to local
-  const reqProtocol = req.get("x-forwarded-proto")
-    ? req.get("x-forwarded-proto").split(",")[0]
-    : req.get("protocol");
-  const reqAppUrl = reqProtocol + "://" + req.get("host");
-  if (config.appUrl != reqAppUrl) {
-    config.appUrl = reqAppUrl;
-    console.log(`Updated appUrl to ${config.appUrl}`);
-  }
-  next();
-});
-
-
-
 app.get('/', function (req, res) {
   console.log(req);
   res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
