@@ -15,7 +15,7 @@ const ENV_VARS = [
 module.exports = {
 // Messenger Platform API
 apiDomain: "https://graph.facebook.com",
-apiVersion: "v13.0",
+apiVersion: "v11.0",
 
 // Page and Application information
 pageId: process.env.PAGE_ID,
