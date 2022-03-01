@@ -20,7 +20,7 @@
      let url = new URL(`${config.apiUrl}/${config.pageId}/subscribed_apps`);
      url.search = new URLSearchParams({
        access_token: config.pageAccesToken,
-       subscribed_fields: "feed"
+       subscribed_fields: "mention"
      });
      let response = await fetch(url, {
        method: "POST"
