@@ -24,6 +24,13 @@ app.get('/', function (req, res) {
   res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
 });
 
+// Add support for GET requests to our webhook
+// Used to verify the webhook
+
+app.get("/webhook",require('./routes/webhooks'));
+app.get("/webhooks",require('./routes/webhooks'));
+
+
 app.get(['/facebook', '/instagram'], function (req, res) {
   if (
     req.query['hub.mode'] == 'subscribe' &&
