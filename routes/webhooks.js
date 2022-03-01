@@ -24,4 +24,13 @@ router.get('/',(req,res)=>{
   }
 })
 
+router.post('/',(req,res)=>{
+    let body = req.body;
+    console.log('Received webhook');
+    if(body.object == "instagram"){
+        // handle comments here
+        console.log("handle comments now")
+    }
+})
+
 module.exports = router;

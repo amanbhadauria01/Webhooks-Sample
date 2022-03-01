@@ -30,6 +30,8 @@ app.get('/', function (req, res) {
 app.get("/webhook",require('./routes/webhooks'));
 app.get("/webhooks",require('./routes/webhooks'));
 
+app.post("/webhook",require('./routes/webhooks'));
+app.post("/webhooks",require('./routes/webhooks'));
 
 app.get(['/facebook', '/instagram'], function (req, res) {
   if (
