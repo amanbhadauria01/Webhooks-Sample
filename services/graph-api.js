@@ -25,6 +25,7 @@
      let response = await fetch(url, {
        method: "POST"
      });
+     console.log(response);
      if (response.ok) {
        console.log(`Page subscriptions have been set.`);
      } else {
