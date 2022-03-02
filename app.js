@@ -37,8 +37,35 @@ app.get('/facebook',require('./routes/facebook'));
 app.post('/facebook',require('./routes/facebook'));
 
 // requests of instagram
-app.get('/instagram',require('./routes/instagram'));
-app.post('/instagram',require('./routes/instagram'));
+app.get('/instagram',(req,res)=>{
+  if (
+      req.query['hub.mode'] == 'subscribe' &&
+      req.query['hub.verify_token'] == token
+    ) {
+      res.send(req.query['hub.challenge']);
+    } else {
+      res.sendStatus(400);
+    }
+})
+app.post('/instagram',(req,res)=>{
+  let body = req.body;
+  console.log('Instagram request body:');
+  console.log(body);
+  if(body.object === "instagram"){
+    body.entry.forEach(async function(entry){
+      if("changes" in entry){
+        if(changes.field === "comments"){
+          console.log("found comment :"+ entry.changes.text);
+        }
+      }
+    })
+  }
+  // Process the Instagram updates here
+  received_updates.unshift(req.body);
+  res.sendStatus(200);
+})
+// app.get('/instagram',require('./routes/instagram'));
+// app.post('/instagram',require('./routes/instagram'));
 
 // privacy policy url 
 app.get('/policy',function(req,res){
