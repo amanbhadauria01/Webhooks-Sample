@@ -55,6 +55,7 @@ app.post('/instagram',(req,res)=>{
       if("changes" in entry){
         if(entry.changes.field === "comments"){
           console.log("found comment :"+ entry.changes.text);
+          await GraphApi.moderateComments_of_ig_comment(entry.change.id);
         }
       }
     })
