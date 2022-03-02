@@ -24,6 +24,8 @@ pageAccesToken: process.env.PAGE_ACCESS_TOKEN,
 appSecret: process.env.APP_SECRET || null,
 verifyToken: process.env.VERIFY_TOKEN || null,
 shopUrl: process.env.SHOP_URL || "https://webhookco18.herokuapp.com",
+ig_userId : process.env.INSTAGRAM_USER_ID || null,
+userAccessToken : process.env.USER_ACCESS_TOKEN || null,
 
 // URL of your app domain. Will be automatically updated.
 appUrl: process.env.APP_URL || "<App URL>",
