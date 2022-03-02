@@ -53,7 +53,7 @@ app.post('/instagram',(req,res)=>{
   if(body.object === "instagram"){
     body.entry.forEach(async function(entry){
       if("changes" in entry){
-        if(changes.field === "comments"){
+        if(entry.changes.field === "comments"){
           console.log("found comment :"+ entry.changes.text);
         }
       }
